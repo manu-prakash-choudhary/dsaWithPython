@@ -59,6 +59,18 @@
                 else: count+=1 and itr = itr.next;
 
 
+    -> to detect if there's a loop in a given linked list or not, this will be true if we found any node twice while iterating through it'
+            unique = set()
+            while itr:
+                if itr in unique: return True
+                else : unique.add(itr) and itr.next 
+        
+    -> Detecting and removing a loop - Floyds cycle detection algorithm is used to do this task
+            we will create two pointers slow and fast and slow will move with one step and fast will move with 2 steps 
+            if at any time fast == slow that means there will be a loop otherwise will will reach None implying no Loop.
+
+            Now after detecting the existing of loop we need to detect the node which causes the loop.
+            we will do this putting two pointers one at head and another at point where slow and fast met, we will move both pointers one by one and the place where they meet will be the cause of loop 
 
 
 
@@ -74,6 +86,7 @@
 
     '''
 from random import random
+from tkinter.tix import Tree
 
 
 class Node : 
@@ -212,7 +225,68 @@ class LinkedList:
             count+=1
             itr = itr.next
 
+    def get_nth_node_from_last(self,number):
+        length = self.get_length()
+        if number> length:
+            raise Exception("index out of range")
+            return
+        return self.get_nth_node(length - number )
+
+    def middle_element(self):
+        length = self.get_length()
+        if length == 0:
+            print("list is empty")
+            return
+        if length%2 == 0:
+            return (self.get_nth_node(length//2),self.get_nth_node(length//2-1))
+        return self.get_nth_node(length//2)
+    
+    def detect_loop(self):
+        itr = self.head
+        unique = set()
+        while itr : 
+            if itr in unique:
+                raise Exception(" Loop detected in your Linked List")
+            unique.add(itr)
+            itr = itr.next
+        return False
+
+    
+    def detect_loop_floyds_algo(self):
+        slow  = self.head
+        fast = self.head
+        flag = True
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if fast == slow:
+                print("Loop exists")
+                return self.remove_loop(slow)
+    
+    def remove_loop(self,temp):
+        start = temp
+        k=0
+        while start.next!=temp:
+            start = start.next
+            k+=1
+        number_of_nodes_in_loop = k
+        start.next = None
+        return (k,start.data)
+            
         
+    
+'''Count the number of occurances of a given element'''  #it is outside class just for fun😉 
+def occur_of_int(item,ll):
+    
+    header = ll.head
+    count = 0
+    while header:
+        if header.data == item:
+            count+=1
+        header = header.next
+    return count
+
+
 if __name__ == '__main__':
     ll =LinkedList()
     ll.insert_at_begining(900)
@@ -221,18 +295,30 @@ if __name__ == '__main__':
     ll.insert_at_ending(98)
 
     ll.insert_values(['hey',344,'bhack','mack','bhang'])
+
+    # a = ll.head
+    # a.next.next.next.next.next = Node('blah',a)
+    # tupled = ll.detect_loop_floyds_algo()
+    # print("length of loop is : {} at {} node".format(tupled[0],tupled[1]))
+    # print('LL : ',end ="")
+    # ll.print()
+
+
     ll.insert_after_by_value(344,430)
     # ll.remove_by_value(344)
-    # print(ll.search_node('mack'))
-    print("3rd node ->",ll.get_nth_node(3))
-    ll.print()
-
+    ll.search_node('mack')
+    
+    
+    
+    print("3rd node ->",ll.get_nth_node(3))  
+    
 
 
     # ll.remove_at(2)
     # ll.print()
 
     ll.insert_at(1,'flags')
-    ll.print()
-    ll.delete_list()
+    # print("third last element -> ",ll.get_nth_node_from_last(3))
+    print("middle element(s) from given ll : ",ll.middle_element())
+    print("430 has been occured at index -> ",occur_of_int(430,ll))
     
