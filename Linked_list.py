@@ -72,8 +72,46 @@
             Now after detecting the existing of loop we need to detect the node which causes the loop.
             we will do this putting two pointers one at head and another at point where slow and fast met, we will move both pointers one by one and the place where they meet will be the cause of loop 
 
+    -> swaping nodes without swaping data
+            function given below
 
+    -> swaping nodes pairwise using data
+            while itr and itr.next: 
+                itr.data,itr.next.data = itr.next.data,itr.data
+                itr = itr.next.next
 
+    -> move last element to the front
+            temp = self.head
+            while itr.next:
+                 second_last = itr and itr = itr.next
+            second_last.next = None     #otherwise list will become circular
+            itr.next = temp
+            self.head = itr.next
+    
+    -> common of two sorted linked list i.e., common elements of two sorted LL's.
+            dummy =  Node() and tail = dummy and dummy.next = None
+            while l1 and l2:
+                if (l1.data ==l2.data) =>{ new_LL.next = Node(l1.data,None) }
+                elif(l1.data>l2.data)=>{l2 = l2.next}
+                else : l1.next
+            return dummy.next
+    
+
+    -> interesction point of two LL's ie. the common node between both linkedlists
+            calculated the diff 'd' betwween number of nodes of two LL's
+            traverse bigger list 'L1' till d and store Nodes in a set "uniq"
+            for range(len(L1)):
+                  traveserse both L1 and L2 if crrent_Node present in uniq then return else append every Node of both lists to uniq 
+
+    -> reverse a linked List
+        prev = None
+        while itr:
+            next = itr.next
+            itr.next = prev
+            prev = current
+            itr = next
+        self.head = prev
+            
     '''
 
 '''Geek for Geeks Link -  https://www.geeksforgeeks.org/data-structures/linked-list/'''
@@ -86,7 +124,6 @@
 
     '''
 from random import random
-from tkinter.tix import Tree
 
 
 class Node : 
@@ -269,10 +306,59 @@ class LinkedList:
         while start.next!=temp:
             start = start.next
             k+=1
-        number_of_nodes_in_loop = k
         start.next = None
         return (k,start.data)
-            
+    
+    def check_palindrome(self):
+        stack_str = ""
+        itr = self.head
+        while itr:
+            stack_str+=str(itr.data)
+            itr = itr.next
+        if stack_str[::-1] == stack_str:
+            return True
+        return False
+
+    def swap_nodes(self,node1,node2):
+        itr1 = self.head
+        prev1 = None
+        while itr1 and itr1 != node1 :
+            prev1 = itr1
+            itr1 = itr1.next
+        
+        itr2 = self.head
+        prev2 = None
+        while itr2 and node2!=itr2:
+            prev2 = itr2
+            itr2 = itr2.next
+        if itr2 and itr1:
+            if prev1 and prev2:
+                prev1.next, prev2.next = itr2, itr1
+                node1.next, node2.next = node2.next, node1.next
+            elif prev2:
+                prev2.next = itr1
+                self.head = itr2                
+                itr1.next,itr2.next = itr2.next,itr1.next
+
+            else:
+                prev1.next = itr2
+                self.head = itr1
+                itr1.next,itr2.next = itr2.next,itr1.next
+
+    def intersection_sorted_LL(self,l1,l2):
+        dummy = Node()
+        tail = dummy
+        while l1 and l2:
+            if l1.data == l2.data:
+                tail.next = Node(l1.data,tail.next)
+                tail = tail.next
+                l1 = l1.next
+                l2 = l2.next
+            elif l1.data>l2.data:
+                l2 = l2.next
+            else:
+                l1 = l1.next
+        return dummy.next
         
     
 '''Count the number of occurances of a given element'''  #it is outside class just for fun😉 
@@ -286,6 +372,10 @@ def occur_of_int(item,ll):
         header = header.next
     return count
 
+def printa(ll):
+    while ll:
+        print(ll.data)
+        ll = ll.next
 
 if __name__ == '__main__':
     ll =LinkedList()
@@ -319,6 +409,22 @@ if __name__ == '__main__':
 
     ll.insert_at(1,'flags')
     # print("third last element -> ",ll.get_nth_node_from_last(3))
-    print("middle element(s) from given ll : ",ll.middle_element())
-    print("430 has been occured at index -> ",occur_of_int(430,ll))
+    
+    # print("middle element(s) from given ll : ",ll.middle_element())
+    # print("430 has been occured at index -> ",occur_of_int(430,ll))
+    
+
+    # ll.insert_values(['r','a','d','a','r'])
+    # print(ll.check_palindrome())
+    
+    # ll.swap_nodes(ll.head,ll.head.next.next.next.next.next.next)
+    # ll.print()
+
+    # l1 = LinkedList()
+    # l1.insert_values([2,3,4,5,6,7])
+    # l2 = LinkedList()
+    # l2.insert_values([1,3,5,7])
+    # intersected_LL = ll.intersection_sorted_LL(l1.head,l2.head)
+    # printa(intersected_LL)
+    
     
