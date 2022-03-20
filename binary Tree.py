@@ -4,9 +4,11 @@
 Binary Tree are of three types full,complete and strict
 example of application is huffman coding tree.
 
+ -> inserting a node : if we want to insert a value 12 then we have check if current node has further right or left subtree if not then we will compare current node value with the value we want to insert
+
  - > finding minimum and maximum - Traverse only left part of subtrees to find minimum and traverse only right part for finding maximum
 
- ->  
+ ->  deleting a node
 
 
 
