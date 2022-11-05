@@ -17,8 +17,7 @@ example of application is huffman coding tree.
 
 
 
-*******Below is some bull shit theory!*******
-
+Below is some bull shit theory!
 
 -> Handshake theorem
         Basically it tells about properties of Binary tree  mentioned below 
@@ -71,39 +70,9 @@ AVL TREE
         . Extra Space required for Depth First Traversals is O(h) where h is maximum height of Binary Tree. In Depth First Traversals, stack (or function call stack) stores all ancestors of a node.
 
 
+--> Binary Tree (Array implementation) - It is tree representing technique using array such that array indexes are values in tree nodes and array values give the parent node of that particular index (or node). The value of the root node index would always be -1 as there is no parent for root.
 
---> Binary Tree (Array implementation) 
-         . It is tree representing technique using array such that array indexes are values in tree nodes and   array values give the parent node of that particular index (or node). 
-         . The value of the root node index would always be -1 as there is no parent for root.
-         for example construct binary tree using {1, 5, 5, 2, 2, -1, 3}
-         . https://www.geeksforgeeks.org/construct-a-binary-tree-from-parent-array-representation/
-         
---->  AVL tree(Balanced Binary Tree)
-         . AVL tree is a self-balancing Binary Search Tree (BST) where the difference between heights of left and right subtrees cannot be more than one for all nodes.
-         There can be 4 cases for unbalanced Binary Search Tree right after insertion.
-                1. Left Left Case : Perform RR(Right Rotation)
-                2. Left Right Case : LR then RR
-                3. Right Right Case : LR
-                4. Right Left Case : RR then LR                                         
-
-
-            
----> Continous Tree 
-         . A tree is a Continuous tree if in each root to leaf path, the absolute difference between keys of two adjacent is 1. We are given a binary tree, we need to check if the tree is continuous or not. For Example:
-
-                Cont. Tree                      Not Cont. Tree
-                     3                               7
-                    / \                            /   \
-                   2   4                          5     8
-                  / \   \                        / \     \
-                 1   3   5  8                    6  4     10
-
-
---> Applications of Tree : https://www.geeksforgeeks.org/applications-of-tree-data-structure/
 """
-
-
-
 
 
 
@@ -123,19 +92,14 @@ class BinarySearchTreeNode:
         if data < self.data:
             if self.left:
                 self.left.add_child(data)
-                
             else:
                 self.left = BinarySearchTreeNode(data)
-                # self.avl_balance(data)   uncomment these two lines if you want avl trees.
         else:
             if self.right:
                 self.right.add_child(data)
             else:
                 self.right = BinarySearchTreeNode(data)
-                # self.avl_balance(data)
-        
-        
-    
+
     def search(self,value):
         
         if self.data==value:
@@ -237,21 +201,23 @@ class BinarySearchTreeNode:
                 return
         else:
             self.data = value
-        
+
     
 
-    def get_height(self,root):
-        a,b=0,0
-        
-        if root is None:
-            return 0
-        while root.left or root.right:  
-            if root.right:
+
+    
+
+
+
+    def get_height(self):
+        a,b=1,1
+        while self.left or self.right:  
+            if self.right:
                 a += 1
-                root = root.right
+                self = self.right
             else:
                 b += 1
-                root = root.left
+                self = self.left
         return max(a,b)+1
         
 
@@ -272,62 +238,15 @@ class BinarySearchTreeNode:
             self.print_current_level(self,i)
         print("None")
     
-    
-#its a fucked up func improve it.
-    def avl_balance(self,value):
-        print(value)
-        print("right height",self.get_height(self.right),"left height - >",self.get_height(self.left))
-        bal = self.get_height(self.left) - self.get_height(self.right)
-        print("bal",bal)
-        if bal>1 and value<self.left.data:
-            self.right_rotate()
+    # binary tree array implementation
 
-        if bal>1 and value>self.left.data:
-            self.left = self.left_rotate()
-            self.right_rotate()
-        if bal<-1 and value>self.right.data:
-            self.left_rotate()
-        if bal<-1 and value<self.right.data:
-            self.right  = self.right_rotate()
-            self.left_rotate()
-        
+                
 
-    def right_rotate(self):
-        
-        y= self.left
-        t2 = y.right
-        y.right = self
-        self.left = t2
-        self = y
-
-
-    def left_rotate(self):
-        
-        y= self.right
-        t2 = y.left
-        y.left = self
-        self.right = t2
-        self = y
-
-    def check_cont_tree(self,root):
-        if not root:
-            return True
-        if root.left:
-            if not abs(root.data-root.left.data)==1:
-                return False
-        if root.right:
-            if not abs(root.data-root.right.data)==1:
-                return False
-        if self.check_cont_tree(root.left) and self.check_cont_tree(root.right):
-            return True
-
-            
 def build_tree(element):
     BT = BinarySearchTreeNode(element[0])
 
     for i in range(1,len(element)):
         BT.add_child(element[i])
-        # BT.avl_balance(element[i])
 
     return BT
 
@@ -335,11 +254,9 @@ def build_tree(element):
 
     
 
-# element = [17,4,9,20,18,345,22,11]    
-element = [7,5,8,6,4,10]
+element = [17,4,9,20,18,345,22,11]    
 my_list = build_tree(element)
 print(my_list.inorder_traversal()) #this will be sorted list.
-print(my_list.check_cont_tree(my_list))
 
 
 # my_list.bfs()
@@ -356,3 +273,5 @@ print(my_list.check_cont_tree(my_list))
 # print("After -> ", my_list.inorder_traversal())
 # print(my_list.inorder_traversal())
 # my_list.delete(4)
+
+
