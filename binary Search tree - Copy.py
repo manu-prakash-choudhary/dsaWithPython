@@ -1,6 +1,7 @@
 
 """
                                             Binary Tree
+                                            
 Binary Tree are of three types full,complete and strict
 example of application is huffman coding tree.
 
