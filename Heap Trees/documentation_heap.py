@@ -35,6 +35,8 @@ Generally, Heaps can be of two types:
     . To print all elements of the heap in sorted order time complexity is O(N*log N), whereas, for BST, it takes only O(N) time.
     . Memory management is more complex in heap memory because it is used globally. Heap memory is divided into two parts-old
       generations and the young generation etc. at java garbage collection.
+
+      
 . For any ith node
 			Arr[i-1] / 2 represent its parent node
 			Arr[2*i + 1] represents its left child
@@ -59,12 +61,12 @@ Generally, Heaps can be of two types:
 
 --------->  Operations on Min Heap:
 
-                1) getMini(): It returns the root element of Min Heap. Time Complexity of this operation is O(1).
+                1) get_min(): It returns the root element of Min Heap. Time Complexity of this operation is O(1).
 
-                2) extractMin(): Removes the minimum element from MinHeap. Time Complexity of this Operation is O(Logn) as this operation
+                2) extract_min(): Removes the minimum element from MinHeap. Time Complexity of this Operation is O(Logn) as this operation
                    needs to maintain the heap property (by calling heapify()) after removing root.
 
-                3) decreaseKey(): Decreases value of key. The time complexity of this operation is O(Logn). If the decreases key value of
+                3) decrease_key(): Decreases value of key. The time complexity of this operation is O(Logn). If the decreases key value of
                    a node is greater than the parent of the node, then we don't need to do anything. Otherwise, we need to traverse up to
                    fix the violated heap property.
 
@@ -73,6 +75,16 @@ Generally, Heaps can be of two types:
 
                 5) delete(): Deleting a key also takes O(Logn) time. We replace the key to be deleted with minum infinite by calling
                    decreaseKey(). After decreaseKey(), the minus infinite value must reach root, so we call extractMin() to remove the key.
+
+
+--------->  Heapify_UP method:
+                  In this method we will do the following
+                     1) take the last element of the heap.
+                     2) we will compare it with its parent node 
+                     3) we will swap the element if parent node is greater than current element and we will repeat step 2 and 3 as long as it satifies 
+                        the condition and parent node exists
+                     4) whenever condition gets violated or parent node does not exist then we will stop our heapify method, which will mean that heapification 
+                        has been done.
 
 '''
 
