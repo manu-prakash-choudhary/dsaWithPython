@@ -38,9 +38,9 @@ Generally, Heaps can be of two types:
 
 
 . For any ith node
-			Arr[i-1] / 2 represent its parent node
-			Arr[2*i + 1] represents its left child
-			Arr[2*i + 2] represents its right child
+         Arr[i-1] / 2 represent its parent node
+         Arr[2*i + 1] represents its left child
+         Arr[2*i + 2] represents its right child
 
 
 
@@ -161,10 +161,25 @@ Generally, Heaps can be of two types:
                            With this relation, we can conclude that there are O(Logn) Binomial Trees in a Binomial Heap with 'n' nodes.
 
 
---------->  Operations of Binomial Heap: 
-                  The main operation in Binomial Heap is a union(), all other operations mainly use this operation.
-                  The union() operation is to combine two Binomial Heaps into one.
+--------->  Operations of Binomial Heap:
+                  1. The main operation in Binomial Heap is a union(), all other operations mainly use this operation. The union() operation is to combine two Binomial Heaps into one.
+                  2. insert(H, k): Inserts a key 'k' to Binomial Heap 'H'. This operation first creates a Binomial Heap with a single key 'k', then calls union on H and the new Binomial heap.
+                  3. gettingMin(H): A simple way to getMin() is to traverse the list of the roots of Binomial Trees and return the minimum key. This implementation requires O(Logn) time. It can be optimized to O(1) by maintaining a pointer to the minimum key root.
+                  4. extractingMin(H): This operation also uses a union(). We first call getMin() to find the minimum key Binomial Tree, then we remove the node and create a new Binomial Heap by connecting all subtrees of the removed minimum node. Finally, we call union() on H and the newly created Binomial Heap. This operation requires O(Logn) time.
+                  5. delete(H): Like Binary Heap, the delete operation first reduces the key to minus infinite, then calls extractingMin().
+                  6. decrease key(H): decrease key() is also similar to Binary Heap. We compare the decreased key with its parent and if the parent’s key is more, we swap keys and recur for the parent. We stop when we either reach a node whose parent has a smaller key or we hit the root node. The time complexity of the decrease key() is O(Logn).
+---------> Union operation in Binomial Heap:
+                  Given two Binomial Heaps H1 and H2, union(H1, H2) creates a single Binomial Heap.
 
+                  . The first step is to simply merge the two Heaps in non-decreasing order of degrees.
+                  . After the simple merge, we need to make sure that there is at most one Binomial Tree of any order. To do this, we need to combine Binomial Trees of the same order. We traverse the list of merged roots, we keep track of three-pointers, prev, x, and next-x. There can be the following 4 cases when we traverse the list of roots.
+                     —-Case 1: Orders of x and next-x are not the same, we simply move ahead.
+                     In the following 3 cases, orders of x and next-x are the same.
+                     —-Case 2: If the order of next-next-x is also the same, move ahead.
+                     —-Case 3: If the key of x is smaller than or equal to the key of next-x, then make next-x a child of x by linking it with x.
+                     —-Case 4: If the key of x is greater, then make x the child of next.
+                     
+                     refer image (https://media.geeksforgeeks.org/wp-content/uploads/Bionomial_tree_2.png) for better understanding.
 '''
 
 from binary_heap import MinHeap
