@@ -3,13 +3,13 @@
 Generally, Heaps can be of two types:
     Max-Heap: In a Max-Heap the key present at the root node must be greatest among the keys present at all of it's children.
             --> The same property must be recursively true for all sub-trees in that Binary Tree.
-    Min-Heap: In a Min-Heap the key present at the root node must be minimum among the keys present at all of it's children. 
+    Min-Heap: In a Min-Heap the key present at the root node must be minimum among the keys present at all of it's children.
             --> The same property must be recursively true for all sub-trees in that Binary Tree.
 
 ----> Operations of Heap Data Structure:
             1. Heapify: a process of creating a heap from an array.
             2. Insertion: process to insert an element in existing heap time complexity O(log N).
-            3. Deletion: deleting the top element of the heap or the highest priority element, and then 
+            3. Deletion: deleting the top element of the heap or the highest priority element, and then
                organizing the heap and returning the element with time complexity O(log N).
             4. Peek: to check or find the most prior element in the heap, (max or min element for max and min heap).
 
@@ -24,7 +24,7 @@ Generally, Heaps can be of two types:
     . To just peek at the most prior element the time complexity is constant O(1).
     . Can be implemented using an array, it doesn't need any extra space for pointer.
     . A binary heap is a balanced binary tree, and easy to implement.
-    . Heap can be created with O(N) time.
+    . Heap can be created with O(N) time.(Proof - https://www.geeksforgeeks.org/time-complexity-of-building-a-heap/)
 
 . Heap is analmost complete Binary tree.
 
@@ -42,9 +42,9 @@ Generally, Heaps can be of two types:
 			Arr[2*i + 1] represents its left child
 			Arr[2*i + 2] represents its right child
 
-                        
-                        
-                        
+
+
+
 -------->   Applications of Heaps:
 
                 1) Heap Sort: Heap Sort uses Binary Heap to sort an array in O(nLogn) time.
@@ -57,6 +57,10 @@ Generally, Heaps can be of two types:
                         a) K'th Largest Element in an array.
                         b) Sort an almost sorted array
                         c) Merge K Sorted Arrays.
+
+                5) Patient treatment: In a hospital, an emergency patient, or the patient with more injury is treated first. Here the priority is the degree of injury.
+                6) Systems concerned with security use heap sort, like the Linux kernel.
+                7) Used in graph algorithms such as Dijkstra and A* search algorithms.
 
 
 --------->  Operations on Min Heap:
@@ -80,17 +84,65 @@ Generally, Heaps can be of two types:
 --------->  Heapify_UP method:
                   In this method we will do the following
                      1) take the last element of the heap.
-                     2) we will compare it with its parent node 
-                     3) we will swap the element if parent node is greater than current element and we will repeat step 2 and 3 as long as it satifies 
+                     2) we will compare it with its parent node
+                     3) we will swap the element if parent node is greater than current element and we will repeat step 2 and 3 as long as it satifies
                         the condition and parent node exists
-                     4) whenever condition gets violated or parent node does not exist then we will stop our heapify method, which will mean that heapification 
+                     4) whenever condition gets violated or parent node does not exist then we will stop our heapify method, which will mean that heapification
                         has been done.
+
+--------->  Heap Sort:
+               It is one of the fastest sorting algorithms with time comoplexity of O(N*logN) and its easy to implement
+               Heap sort is an in-place algorithm.
+               Its typical implementation is not stable, but can be made stable.
+               Typically 2-3 times slower than well-implemented QuickSort.  The reason for slowness is a lack of locality of reference.
+
+            Advantages of heapsort:
+               . Efficiency - The time required to perform Heap sort increases logarithmically while other algorithms may grow exponentially slower as the number of items to sort increases. This sorting algorithm is very efficient.
+               . Memory Usage - Memory usage is minimal because apart from what is necessary to hold the initial list of items to be sorted, it needs no additional memory space to work
+               . Simplicity -  It is simpler to understand than other equally efficient sorting algorithms because it does not use advanced computer science concepts such as recursion.
+
+            Disadvantages of Heap Sort:
+               . Costly: Heap sort is costly.
+               . Unstable: Heat sort is unstable. It might rearrange the relative order.
+               . Efficient: Heap Sort are not very efficient when working with highly complex data.
+
+            Applications of HeapSort:
+               . Heapsort is mainly used in hybrid algorithms like the IntroSort.
+               . Sort a nearly sorted (or K sorted) array
+               . k largest(or smallest) elements in an array
+
+
+
+--------->  Bionomial Tree: A Binomial Tree of order 0 has 1 node. A Binomial Tree of order k can be constructed by taking two binomial trees of order k-1 and making one the leftmost child of the other.
+
+            - A Binomial Tree of order k the has following properties.
+               . It has exactly 2k nodes.
+               . It has depth as k.
+               . There are exactly kaiCi nodes at depth i for i = 0, 1, . . . , k.
+               . The root has degree k and children of the root are themselves Binomial Trees with order k-1, k-2,.. 0 from left to right.
+
+            Example:
+
+               k = 0 (Single Node)
+
+                     o
+
+               k = 1 (2 nodes)
+               [We take two k = 0 order Binomial Trees, and
+               make one as a child of other]
+               o
+              /
+             o
+
+
+--------->  Bionomial Heap: A Binomial Heap is a set of Binomial Trees where each Binomial Tree follows the Min Heap property.
+                           And there can be at most one Binomial Tree of any degree.
 
 '''
 
 from binary_heap import MinHeap
 
-heap_obj = MinHeap(15)   # 15 will be the capacity of the heap 
+heap_obj = MinHeap(15)   # 15 will be the capacity of the heap
 heap_obj.insert(10)
 heap_obj.insert(11)
 heap_obj.insert(13)
@@ -101,7 +153,7 @@ heap_obj.insert(0)
 print(heap_obj.storage)
 print(heap_obj.remove_min())
 print(heap_obj.storage)
-main_str  =  str(heap_obj.storage) 
+main_str = str(heap_obj.storage)
 print(main_str)
 from drawtree import draw_level_order
 draw_level_order(main_str)
