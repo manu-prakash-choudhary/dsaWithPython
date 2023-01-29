@@ -36,7 +36,7 @@ Generally, Heaps can be of two types:
     . Memory management is more complex in heap memory because it is used globally. Heap memory is divided into two parts-old
       generations and the young generation etc. at java garbage collection.
 
-      
+
 . For any ith node
 			Arr[i-1] / 2 represent its parent node
 			Arr[2*i + 1] represents its left child
@@ -88,6 +88,19 @@ Generally, Heaps can be of two types:
 
 '''
 
-import binary_heap
+from binary_heap import MinHeap
 
-print(binary_heap.create_heap())
+heap_obj = MinHeap(15)   # 15 will be the capacity of the heap 
+heap_obj.insert(10)
+heap_obj.insert(11)
+heap_obj.insert(13)
+heap_obj.insert(14)
+heap_obj.insert(8)
+heap_obj.insert(5)
+heap_obj.insert(0)
+print(heap_obj.storage)
+print(heap_obj.remove_min())
+print(heap_obj.storage)
+
+
+

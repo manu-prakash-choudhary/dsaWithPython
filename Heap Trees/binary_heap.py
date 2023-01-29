@@ -9,7 +9,7 @@ class Node():
 '''
 class MinHeap():
     def __init__(self, capacity) -> None:
-        self.storage = [0] * capacity
+        self.storage = [None] * capacity
         self.capacity = capacity
         self.size = 0
 
@@ -26,12 +26,12 @@ class MinHeap():
         return self.get_parent_index(index) >= 0
 
     def has_left_child(self, index):
-        return self.get_left_child_index < self.size
+        return self.get_left_child_index(index) < self.size
 
     def has_right_child(self, index):
         return self.get_right_child_index(index) < self.size
 
-    def is_full(self, index):
+    def is_full(self):
         return self.size == self.capacity
 
     def swap(self, index1, index2):
@@ -76,8 +76,9 @@ class MinHeap():
             raise("Heap Already Empty")
         data = self.storage[0]
         self.storage[0] = self.storage[self.size - 1]
+        self.storage.pop(self.size - 1)
         self.size -= 1
-        self.heapify_down()
+        self.heapify_down(0)
         return data
 
     # heapify down iterative approach
@@ -103,3 +104,13 @@ class MinHeap():
         if smaller_child_index != index:
             self.swap(smaller_child_index, index)
             self.heapify_down(smaller_child_index)
+
+
+
+# heap_obj = MinHeap(10)
+# heap_obj.insert(10)
+# heap_obj.insert(11)
+# heap_obj.insert(13)
+# heap_obj.insert(14)
+# heap_obj.insert(1)
+# print(heap_obj.storage)
