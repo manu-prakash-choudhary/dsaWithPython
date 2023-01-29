@@ -138,6 +138,33 @@ Generally, Heaps can be of two types:
 --------->  Bionomial Heap: A Binomial Heap is a set of Binomial Trees where each Binomial Tree follows the Min Heap property.
                            And there can be at most one Binomial Tree of any degree.
 
+                           Below is an example of Binomial heap with 13(i.e., 1101 in binary) Nodes and 3 binary trees of order 2,3 and 0 order
+                           No of bionomial trees in a bionomial heap will be decided by number of ones in the binary of total number of nodes and
+                           order of those trees will be given by the places at which the ones occur. For example if N = 13 then binary of 13 will
+                           be 1101 and therefore its bionomial heap will be of 3 binomial trees which will be of order 0, 2 and 3 as '1' occur at
+                           these places in the binary of 13
+                                 ______________________________________
+            header[H]----->      |12--------->10------------------->20 |
+                                 |_____________________________________|
+                                             /  \                 / | \
+                                          15    50             70  50  40
+                                          |                  / |    |
+                                          30               80  85  65
+                                                            |
+                                                            100
+                           A Binomial Heap with 13 nodes. It is a collection of 3
+                           Binomial Trees of orders 0, 2, and 3 from left to right.
+
+                           A Binomial Heap with n nodes has the number of Binomial Trees equal to the number of set bits in the binary representation of n.
+                           For example, let n be 13, there are 3 set bits in the binary representation of n (00001101), hence 3 Binomial Trees.
+                           We can also relate the degree of these Binomial Trees with positions of set bits.
+                           With this relation, we can conclude that there are O(Logn) Binomial Trees in a Binomial Heap with 'n' nodes.
+
+
+--------->  Operations of Binomial Heap: 
+                  The main operation in Binomial Heap is a union(), all other operations mainly use this operation.
+                  The union() operation is to combine two Binomial Heaps into one.
+
 '''
 
 from binary_heap import MinHeap
@@ -157,4 +184,4 @@ main_str = str(heap_obj.storage)
 print(main_str)
 from drawtree import draw_level_order
 draw_level_order(main_str)
-
+# bal line
