@@ -101,6 +101,8 @@ heap_obj.insert(0)
 print(heap_obj.storage)
 print(heap_obj.remove_min())
 print(heap_obj.storage)
-
-
+main_str  =  str(heap_obj.storage) 
+print(main_str)
+from drawtree import draw_level_order
+draw_level_order(main_str)
 
