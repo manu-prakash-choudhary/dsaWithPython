@@ -2,7 +2,7 @@
 
 # /* structure for a node in circular
 # linked list */
-print("Hello World")
+
 class Node:
 	def __init__(self, x):
 		self.data = x
