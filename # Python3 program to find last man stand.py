@@ -49,4 +49,4 @@ if __name__ == '__main__':
 	getJosephusPosition(m, n)
 
 # This code is contributed by Manu Prakash Choudhary
-# bas 2 aur
+# bas 1 aur
