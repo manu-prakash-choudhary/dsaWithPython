@@ -49,4 +49,4 @@ if __name__ == '__main__':
 	getJosephusPosition(m, n)
 
 # This code is contributed by Manu Prakash Choudhary
-# bas 7:30 baje se utha hu
+# bas 6 aur
