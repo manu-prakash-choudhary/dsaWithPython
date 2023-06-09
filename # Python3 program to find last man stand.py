@@ -48,4 +48,4 @@ if __name__ == '__main__':
 	m = 2
 	getJosephusPosition(m, n)
 
-# This code is contributed by mohit kumar 29
+# This code is contributed by Manu Prakash Choudhary
