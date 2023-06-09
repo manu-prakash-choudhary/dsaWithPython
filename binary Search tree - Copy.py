@@ -73,7 +73,9 @@ AVL TREE
 
 --> Binary Tree (Array implementation) - It is tree representing technique using array such that array indexes are values in tree nodes and array values give the parent node of that particular index (or node). The value of the root node index would always be -1 as there is no parent for root.
 
-    ->  If the index of any element in the array is i, the element in the index 2i+1 will become the left child and element in 2i+2 index will become the right child. Also, the parent of any element at index i is given by the lower bound of (i-1)/2.
+->  If the index of any element in the array is i, the element in the index 2i+1 will become the left child and element in 2i+2 index will become the right child. Also, the parent of any element at index i is given by the lower bound of (i-1)/2.
+
+->  The array representation of a Binary Tree is advantageous in representing a Binary Tree is the fact that we can easily represent a Binary Tree using the array indices, and the relations between the nodes can be easily represented using the indices of the array elements.
 
 """
 
