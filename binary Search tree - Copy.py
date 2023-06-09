@@ -83,6 +83,9 @@ AVL TREE
 # Author : Manu Prakash Choudhary
 # Institute : VIT BHOPAl
 # Codechef-id : manu_prakash
+# Codechef-profile : https://www.codechef.com/users/manu_prakash
+# Linkedin-id : https://www.linkedin.com/in/manu-prakash-choudhary/
+
 
 
 
