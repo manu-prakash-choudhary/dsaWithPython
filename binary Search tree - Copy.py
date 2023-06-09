@@ -17,9 +17,7 @@ example of application is huffman coding tree.
 
             2) same with right subtree method except the fact that we will look for minimum value from right subtree
 
-
-
-
+            
 Below is some bull shit theory!
 
 -> Handshake theorem
