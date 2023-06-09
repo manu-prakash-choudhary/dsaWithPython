@@ -80,7 +80,9 @@ AVL TREE
 """
 
 
-# Author : Manu Prakash Chaudhary
+# Author : Manu Prakash Choudhary
+# Institute : VIT BHOPAl
+# Codechef-id : manu_prakash
 
 
 
