@@ -19,3 +19,5 @@ for _ in range(int(input())):
         else:
             list1[binSearch(list1,input_list[i])] = input_list[i]
     print(len(list1),*list1)
+
+print()
