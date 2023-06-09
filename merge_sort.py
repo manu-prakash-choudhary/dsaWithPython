@@ -28,3 +28,4 @@ merge_sort(arr)
 print(arr)
 
 
+print("Time complexity of merge sort is O(nlogn) and space complexity is O(n)")
