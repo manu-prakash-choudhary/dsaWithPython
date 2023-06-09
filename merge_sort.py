@@ -29,3 +29,5 @@ print(arr)
 
 
 print("Time complexity of merge sort is O(nlogn) and space complexity is O(n)")
+print("Merge sort is a stable sorting algorithm")
+print("Merge sort is not adaptive sorting algorithm")
