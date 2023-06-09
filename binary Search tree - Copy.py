@@ -11,9 +11,11 @@ example of application is huffman coding tree.
 
  ->  deleting a node from binary search tree.
         There are two ways to do that 
-            1) using left subtree and right subtree if we will traverse till we find the node to be deleted(self Node) Now using left subtree method we will look for maximum value in left subtree and will set self.data= maximum and then we will apply delete method again(i.e., recursion) till we reach the leaf node so that we can remove that peacfully
+            1) using left subtree and right subtree if we will traverse till we find the node to be deleted(self Node) 
+            Now using left subtree method we will look for maximum value in left subtree and will set self.data= maximum and 
+            then we will apply delete method again(i.e., recursion) till we reach the leaf node so that we can remove that peacfully
 
-            same with right subtree method except the fact that we will look for minimum value from right subtree
+            2) same with right subtree method except the fact that we will look for minimum value from right subtree
 
 
 
