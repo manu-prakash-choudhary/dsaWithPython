@@ -33,12 +33,11 @@ Generally, Heaps can be of two types:
     . The time complexity for searching an element in Heap is O(N).
     . To find a successor or predecessor of an element, the heap takes O(N) time, whereas BST takes only O(log N) time.
     . To print all elements of the heap in sorted order time complexity is O(N*log N), whereas, for BST, it takes only O(N) time.
-    . Memory management is more complex in heap memory because it is used globally. Heap memory is divided into two parts-old
-      generations and the young generation etc. at java garbage collection.
+    
 
 
 . For any ith node
-         Arr[i-1] / 2 represent its parent node
+         Arr[(i-1) // 2 ] represent its parent node
          Arr[2*i + 1] represents its left child
          Arr[2*i + 2] represents its right child
 
